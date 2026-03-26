@@ -1,0 +1,176 @@
+﻿@page "/upload"
+@rendermode InteractiveServer
+@using TechUnited_AiStudio.Services
+@using TechUnited_AiStudio.Models
+@using TechUnited_AiStudio.Data
+@using Microsoft.EntityFrameworkCore
+@using System.Text.Json
+@inject DocumentProcessingService DocService
+@inject OllamaService Ollama
+@inject IDbContextFactory<ApplicationDbContext> DbFactory
+@inject AuthenticationStateProvider AuthStateProvider
+
+<PageTitle>Knowledge Manager - TechUnited</PageTitle>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card shadow-sm border-0 bg-dark text-white p-4">
+                <h3 class="mb-3"><i class="bi bi-cloud-upload text-info"></i> Index New Knowledge</h3>
+                <p class="text-muted small">Upload PDF, DOCX, or TXT files. We will chunk them and generate embeddings using <b>nomic-embed-text</b> on port 11444.</p>
+
+                <div class="upload-zone p-5 border-dashed rounded text-center mb-3">
+                    <InputFile OnChange="HandleFileSelection" class="form-control mb-3" />
+                    @if (isProcessing)
+                    {
+                        <div class="progress mt-3">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width: 100%">
+                                Embedding Chunks...
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                @if (!string.IsNullOrEmpty(statusMessage))
+                {
+                    <div class="alert alert-info py-2 small">@statusMessage</div>
+                }
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card shadow-sm border-0 bg-dark text-white p-4">
+                <h3 class="mb-3"><i class="bi bi-bookshelf text-info"></i> Your Library</h3>
+                <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                    <table class="table table-dark table-hover small">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>Chunks</th>
+                                <th>Added</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var doc in uploadedDocs)
+                            {
+                                <tr>
+                                    <td>@doc.FileName</td>
+                                    <td><span class="badge bg-secondary">@doc.ChunkCount</span></td>
+                                    <td>@doc.DateAdded.ToShortDateString()</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteDoc(doc.FileName)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .border-dashed {
+        border: 2px dashed #334155;
+    }
+
+    .bg-dark {
+        background-color: #1e293b !important;
+    }
+
+    .text-muted {
+        color: #94a3b8 !important;
+    }
+
+    .table-dark {
+        --bs-table-bg: #1e293b;
+    }
+</style>
+
+@code {
+    private bool isProcessing = false;
+    private string statusMessage = "";
+    private List<DocSummary> uploadedDocs = new();
+
+    protected override async Task OnInitializedAsync() => await LoadLibrary();
+
+    private async Task HandleFileSelection(InputFileChangeEventArgs e)
+    {
+        isProcessing = true;
+        statusMessage = $"Analyzing {e.File.Name}...";
+        StateHasChanged();
+
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var userId = authState.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "system";
+
+        try
+        {
+            // 1. Chunking
+            var chunks = await DocService.ExtractAndChunkAsync(e.File);
+
+            using var db = await DbFactory.CreateDbContextAsync();
+            int count = 0;
+
+            foreach (var chunk in chunks)
+            {
+                // 2. Embedding (Port 11444)
+                var vector = await Ollama.GetEmbeddingAsync(chunk, isQuery: false);
+
+                db.KnowledgeChunks.Add(new KnowledgeChunk
+                {
+                    FileName = e.File.Name,
+                    Content = chunk,
+                    VectorJson = JsonSerializer.Serialize(vector),
+                    UserId = userId,
+                    CreatedAt = DateTime.Now
+                });
+                count++;
+            }
+
+            await db.SaveChangesAsync();
+            statusMessage = $"Successfully indexed {e.File.Name} ({count} chunks).";
+            await LoadLibrary();
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Error: {ex.Message}";
+        }
+        finally
+        {
+            isProcessing = false;
+        }
+    }
+
+    private async Task LoadLibrary()
+    {
+        using var db = await DbFactory.CreateDbContextAsync();
+        uploadedDocs = await db.KnowledgeChunks
+            .GroupBy(k => k.FileName)
+            .Select(g => new DocSummary
+            {
+                FileName = g.Key,
+                ChunkCount = g.Count(),
+                DateAdded = g.Max(x => x.CreatedAt)
+            }).ToListAsync();
+    }
+
+    private async Task DeleteDoc(string fileName)
+    {
+        using var db = await DbFactory.CreateDbContextAsync();
+        var chunks = await db.KnowledgeChunks.Where(k => k.FileName == fileName).ToListAsync();
+        db.KnowledgeChunks.RemoveRange(chunks);
+        await db.SaveChangesAsync();
+        await LoadLibrary();
+    }
+
+    public class DocSummary
+    {
+        public string FileName { get; set; } = "";
+        public int ChunkCount { get; set; }
+        public DateTime DateAdded { get; set; }
+    }
+}

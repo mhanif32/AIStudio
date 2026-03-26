@@ -1,0 +1,140 @@
+﻿@implements IDisposable
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.EntityFrameworkCore
+@using TechUnited_AiStudio.Data
+@using TechUnited_AiStudio.Models
+@inject IDbContextFactory<ApplicationDbContext> DbFactory
+@inject AuthenticationStateProvider AuthStateProvider
+
+<div class="unified-sidebar d-flex flex-column h-100">
+    <div class="brand-section px-4 py-3 border-bottom border-secondary border-opacity-25">
+        <a class="navbar-brand fw-bold text-info d-flex align-items-center" href="">
+            <i class="bi bi-cpu-fill me-2 h4 mb-0 pulse-icon"></i>
+            <span class="text-white">TECH</span><span>UNITED AI</span>
+        </a>
+    </div>
+
+    <div class="nav-scrollable flex-grow-1">
+        <nav class="flex-column">
+            <div class="nav-item px-3 mt-2">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <i class="bi bi-house-door-fill me-3"></i> Home
+                </NavLink>
+            </div>
+
+            <AuthorizeView>
+                <Authorized>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="dashboard">
+                            <i class="bi bi-plus-circle-fill text-info me-3"></i> New Chat
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="user-chat">
+                            <i class="bi bi-people-fill text-info me-3"></i> Messaging
+                        </NavLink>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="px-4 mb-2 text-uppercase fw-bold text-secondary tracking-widest" style="font-size: 0.7rem;">
+                            Recent History
+                        </div>
+                        <div class="history-list px-2">
+                            @foreach (var group in ChatGroups)
+                            {
+                                <div class="nav-link history-item @(currentUrl?.Contains(group.Key.ToString()) == true ? "active" : "")"
+                                     style="cursor:pointer; font-size: 0.85rem; color: #cbd5e1;"
+                                     @onclick="() => LoadChat(group.Key)">
+                                    <i class="bi bi-chat-left-text me-2"></i>
+                                    <span class="text-truncate">@group.Value</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </Authorized>
+            </AuthorizeView>
+        </nav>
+    </div>
+
+    <div class="account-section p-3 border-top border-secondary border-opacity-25 bg-dark bg-opacity-25">
+        <AuthorizeView>
+            <Authorized>
+                <div class="nav-item mb-2">
+                    <NavLink class="nav-link small py-1 text-white-50" href="Account/Manage">
+                        <i class="bi bi-person-circle me-2 text-info"></i>
+                        <span class="text-truncate">@context.User.Identity?.Name</span>
+                    </NavLink>
+                </div>
+
+                <form action="Account/Logout" method="post" class="px-0">
+                    <AntiforgeryToken />
+                    @* Option 1: Remove the ReturnUrl entirely to use default redirect *@
+                    @* <input type="hidden" name="ReturnUrl" value="/" /> *@
+
+                    @* Option 2: If you want to keep it, ensure it's a simple relative string *@
+                    <input type="hidden" name="ReturnUrl" value="" />
+
+                    <button type="submit" class="nav-link w-100 text-start border-0 bg-transparent py-1 small text-danger">
+                        <i class="bi bi-box-arrow-left me-2"></i> Logout
+                    </button>
+                </form>
+            </Authorized>
+            <NotAuthorized>
+                <div class="d-grid gap-2 px-2">
+                    <a href="Account/Login" class="btn btn-sm btn-info rounded-pill fw-bold">Login</a>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
+    </div>
+</div>
+
+@code {
+    private string? currentUrl;
+    private Dictionary<Guid, string> ChatGroups = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager.LocationChanged += OnLocationChanged;
+        await LoadHistory();
+    }
+
+    private async Task LoadHistory()
+    {
+        using var db = await DbFactory.CreateDbContextAsync();
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var userId = authState.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        if (!string.IsNullOrEmpty(userId))
+        {
+            var history = await db.ChatMessages
+                .Where(m => m.UserId == userId)
+                .OrderByDescending(m => m.CreatedAt)
+                .ToListAsync();
+
+            ChatGroups = history.GroupBy(m => m.ConversationId)
+                .ToDictionary(g => g.Key, g =>
+                {
+                    var firstMsg = g.FirstOrDefault(m => m.Role == "user")?.Content ?? "New Chat";
+                    return firstMsg.Length > 20 ? firstMsg.Substring(0, 20) + "..." : firstMsg;
+                });
+        }
+    }
+
+    private void LoadChat(Guid sessionId)
+    {
+        NavigationManager.NavigateTo($"/dashboard/{sessionId}");
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+}

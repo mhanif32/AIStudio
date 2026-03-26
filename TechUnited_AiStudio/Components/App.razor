@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="TechUnited_AiStudio.styles.css" />
+
+    <ImportMap />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet @rendermode="RenderModeForPage" />
+</head>
+
+<body>
+    <Routes @rendermode="RenderModeForPage" />
+
+    <script>
+
+        window.scrollToBottom = (elementId) => {
+            // requestAnimationFrame ensures the DOM update is finished
+            window.requestAnimationFrame(() => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    // Check if element is actually visible/rendered
+                    if (element.scrollHeight > 0) {
+                        element.scrollTop = element.scrollHeight;
+                    }
+                }
+            });
+        };
+    </script>
+
+    <script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>
+
+@code {
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+
+    private IComponentRenderMode? RenderModeForPage =>
+        HttpContext.AcceptsInteractiveRouting() ? InteractiveServer : null;
+}

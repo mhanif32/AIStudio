@@ -1,0 +1,282 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\pages\\userchat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\pages\\userchat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\services\\ollamaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\services\\ollamaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\pages\\chat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\pages\\chat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\account\\shared\\externalloginpicker.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\account\\shared\\externalloginpicker.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\account\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\account\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|c:\\users\\mhanif\\source\\repos\\techunited_aistudio\\techunited_aistudio\\components\\pages\\upload.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FDE25181-B05A-47B4-9E5E-8EE9CEDA10AC}|TechUnited_AiStudio\\TechUnited_AiStudio.csproj|solutionrelative:techunited_aistudio\\components\\pages\\upload.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 16,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "TechUnited_AiStudio\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T12:42:59.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserChat.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\UserChat.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Pages\\UserChat.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\UserChat.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Pages\\UserChat.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T10:12:27.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "TechUnited_AiStudio\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwDsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T10:10:02.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ExternalLoginPicker.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Account\\Shared\\ExternalLoginPicker.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T09:55:06.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T20:47:11.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACIAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T15:09:01.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Upload.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\Upload.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Pages\\Upload.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\Upload.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Pages\\Upload.razor",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAUwK8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T18:48:18.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-13T12:26:38.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Account\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Account\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Account\\Pages\\Login.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Account\\Pages\\Login.razor",
+              "ViewState": "AgIAAG8AAAAAAAAAAIBJwH8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-13T12:20:55.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\App.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\App.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\App.razor",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T15:09:13.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Chat.razor",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\Chat.razor",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Components\\Pages\\Chat.razor",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Components\\Pages\\Chat.razor",
+              "RelativeToolTip": "TechUnited_AiStudio\\Components\\Pages\\Chat.razor",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAAAC8BAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T13:08:57.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OllamaService.cs",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Services\\OllamaService.cs",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Services\\OllamaService.cs",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Services\\OllamaService.cs",
+              "RelativeToolTip": "TechUnited_AiStudio\\Services\\OllamaService.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T13:05:42.208Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Program.cs",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Program.cs",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Program.cs",
+              "RelativeToolTip": "TechUnited_AiStudio\\Program.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAAABYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T12:50:20.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChatMessage.cs",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Models\\ChatMessage.cs",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Models\\ChatMessage.cs",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Models\\ChatMessage.cs",
+              "RelativeToolTip": "TechUnited_AiStudio\\Models\\ChatMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T12:52:05.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "TechUnited_AiStudio\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA0wDQAAABsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T12:50:36.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\appsettings.json",
+              "RelativeDocumentMoniker": "TechUnited_AiStudio\\appsettings.json",
+              "ToolTip": "C:\\Users\\mhanif\\source\\repos\\TechUnited_AiStudio\\TechUnited_AiStudio\\appsettings.json",
+              "RelativeToolTip": "TechUnited_AiStudio\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-12T12:47:48.604Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

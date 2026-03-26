@@ -1,0 +1,152 @@
+﻿@page "/user-chat"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.SignalR.Client
+@using Microsoft.AspNetCore.Authorization
+@using TechUnited_AiStudio.Data
+@using TechUnited_AiStudio.Models
+@using Microsoft.EntityFrameworkCore
+@attribute [Authorize]
+@inject NavigationManager Navigation
+@inject IDbContextFactory<ApplicationDbContext> DbFactory
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<div class="container-fluid bg-dark text-white p-0" style="height: 85vh;">
+    <div class="row g-0 h-100 border border-secondary">
+        <div class="col-3 border-end border-secondary bg-black overflow-auto">
+            <div class="p-3 border-bottom border-secondary text-info fw-bold">
+                <i class="bi bi-people-fill"></i> Active Users
+            </div>
+            @foreach (var user in AllUsers)
+            {
+                <div class="p-3 border-bottom border-secondary @(SelectedUser?.Id == user.Id ? "bg-primary text-white" : "text-light")"
+                     style="cursor: pointer;" @onclick="() => SelectUser(user)">
+                    <i class="bi bi-person-circle me-2"></i> @(user.UserName ?? user.Email)
+                </div>
+            }
+        </div>
+
+        <div class="col-9 d-flex flex-column h-100 bg-dark">
+            @if (SelectedUser != null)
+            {
+                <div class="p-2 border-bottom border-secondary d-flex justify-content-between align-items-center bg-black">
+                    <span>Chatting with: <strong>@SelectedUser.UserName</strong></span>
+                    <span class="badge @(hubConnection?.State == HubConnectionState.Connected ? "bg-success" : "bg-danger")">
+                        <i class="bi bi-broadcast me-1"></i> @hubConnection?.State
+                    </span>
+                </div>
+
+                <div id="user-chat-box" class="flex-grow-1 p-3 overflow-auto" style="background: #0f0f0f; height: 500px;">
+                    @foreach (var msg in Messages)
+                    {
+                        <div @key="msg" class="d-flex mb-3 @(msg.IsOwnMessage ? "justify-content-end" : "justify-content-start")">
+                            <div class="p-2 px-3 rounded-3 shadow-sm @(msg.IsOwnMessage ? "bg-primary text-white" : "bg-secondary text-white")"
+                                 style="max-width: 75%; word-wrap: break-word;">
+                                @msg.Text
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="p-3 bg-black border-top border-secondary">
+                    <div class="input-group">
+                        <input @bind="newMessage" @bind:event="oninput" @onkeyup="HandleKeyUp"
+                               class="form-control bg-dark text-white border-secondary"
+                               placeholder="Write your message..." />
+                        <button class="btn btn-info px-4" @onclick="SendMessage"
+                                disabled="@(hubConnection?.State != HubConnectionState.Connected || string.IsNullOrWhiteSpace(newMessage))">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private HubConnection? hubConnection;
+    private List<ApplicationUser> AllUsers = new();
+    private ApplicationUser? SelectedUser;
+    private List<ChatMessageModel> Messages = new();
+    private string newMessage = "";
+    private string currentUserId = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        currentUserId = authState.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "";
+
+        using var db = await DbFactory.CreateDbContextAsync();
+        AllUsers = await db.Users.Where(u => u.Id != currentUserId).ToListAsync();
+
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(Navigation.ToAbsoluteUri("/chathub"))
+            .WithAutomaticReconnect()
+            .Build();
+
+        hubConnection.On<string, string>("ReceiveMessage", async (senderId, text) =>
+        {
+            bool isMe = string.Equals(senderId, currentUserId, StringComparison.OrdinalIgnoreCase);
+            bool isTarget = SelectedUser != null && string.Equals(senderId, SelectedUser.Id, StringComparison.OrdinalIgnoreCase);
+
+            if (isMe || isTarget)
+            {
+                // Only add if it's not already there (prevents duplicates from local echo)
+                if (!Messages.Any(m => m.Text == text && m.IsOwnMessage == isMe))
+                {
+                    Messages.Add(new ChatMessageModel { Text = text, IsOwnMessage = isMe });
+                    await InvokeAsync(StateHasChanged);
+                }
+            }
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    private async Task SendMessage()
+    {
+        if (hubConnection?.State == HubConnectionState.Connected && SelectedUser != null)
+        {
+            var msgText = newMessage;
+            newMessage = ""; // Clear UI immediately
+
+            // LOCAL ECHO: Show the message immediately on our screen
+            Messages.Add(new ChatMessageModel { Text = msgText, IsOwnMessage = true });
+            await InvokeAsync(StateHasChanged);
+
+            try
+            {
+                // Call the Hub to save to DB and sync with other user
+                await hubConnection.SendAsync("SendPrivateMessage", SelectedUser.Id, msgText);
+            }
+            catch (Exception ex) { Console.WriteLine($"Send error: {ex.Message}"); }
+        }
+    }
+
+    private async Task SelectUser(ApplicationUser user)
+    {
+        SelectedUser = user;
+        Messages.Clear();
+        using var db = await DbFactory.CreateDbContextAsync();
+        var history = await db.PrivateMessages
+            .Where(m => (m.SenderId == currentUserId && m.ReceiverId == user.Id) || (m.SenderId == user.Id && m.ReceiverId == currentUserId))
+            .OrderBy(m => m.Timestamp).ToListAsync();
+
+        foreach (var m in history)
+            Messages.Add(new ChatMessageModel { Text = m.Content, IsOwnMessage = m.SenderId == currentUserId });
+
+        StateHasChanged();
+    }
+
+    private async Task HandleKeyUp(KeyboardEventArgs e) { if (e.Key == "Enter") await SendMessage(); }
+
+    public class ChatMessageModel
+    {
+        public string Text { get; set; } = "";
+        public bool IsOwnMessage { get; set; }
+    }
+
+    public async ValueTask DisposeAsync() => await (hubConnection?.DisposeAsync() ?? ValueTask.CompletedTask);
+}

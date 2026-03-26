@@ -1,0 +1,32 @@
+.page[b-3kncykhsk6] {
+    display: flex; /* Sidebar and Main content side-by-side */
+    flex-direction: row;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+.sidebar[b-3kncykhsk6] {
+    width: 280px; /* Fixed width for your NavMenu */
+    flex-shrink: 0;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+main[b-3kncykhsk6] {
+    flex: 1; /* Takes up remaining width */
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Prevents layout breaking on small screens */
+}
+
+.top-row[b-3kncykhsk6] {
+    height: 3.5rem;
+    background-color: rgba(15, 23, 42, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}

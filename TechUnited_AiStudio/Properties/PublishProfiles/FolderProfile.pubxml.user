@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>\\10.0.0.33\app\TechUnited-AiStudio</_PublishTargetUrl>
+    <History>True|2026-02-18T09:57:43.5301393Z||;True|2026-02-18T04:49:06.4457928-05:00||;True|2026-02-17T15:21:06.4901710-05:00||;True|2026-02-16T12:13:36.6712130-05:00||;True|2026-02-13T14:14:47.2911714-05:00||;False|2026-02-13T14:09:12.3149824-05:00||;False|2026-02-13T14:07:56.9615900-05:00||;True|2026-02-13T13:42:04.1009768-05:00||;True|2026-02-13T11:30:49.2350636-05:00||;True|2026-02-13T11:03:30.4501453-05:00||;True|2026-02-13T10:41:40.3064323-05:00||;True|2026-02-13T07:10:04.5802712-05:00||;True|2026-02-12T11:43:40.0170089-05:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

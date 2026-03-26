@@ -1,0 +1,68 @@
+/* Home.razor.css */
+.hero-wrapper[b-ku4e0fumqu] {
+    background: radial-gradient(circle at 70% 20%, rgba(13, 202, 240, 0.12), transparent), radial-gradient(circle at 10% 80%, rgba(13, 202, 240, 0.05), #0f172a);
+    padding: 100px 0;
+}
+
+.text-gradient[b-ku4e0fumqu] {
+    background: linear-gradient(90deg, #0dcaf0, #818cf8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.pulse-icon[b-ku4e0fumqu] {
+    display: inline-block;
+    animation: pulse-animation-b-ku4e0fumqu 2s infinite;
+}
+
+/* No need for double @@ here because it's a pure .css file */
+@keyframes pulse-animation-b-ku4e0fumqu {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+        color: #fff;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.feature-card[b-ku4e0fumqu] {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+    .feature-card:hover[b-ku4e0fumqu] {
+        transform: translateY(-10px);
+        border-color: rgba(13, 202, 240, 0.5);
+    }
+
+.tracking-widest[b-ku4e0fumqu] {
+    letter-spacing: 0.12em;
+}
+
+.shadow-glow[b-ku4e0fumqu] {
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.2);
+}
+
+.hover-lift:hover[b-ku4e0fumqu] {
+    transform: translateY(-2px);
+    transition: transform 0.2s;
+}
+
+.glass-button[b-ku4e0fumqu] {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}

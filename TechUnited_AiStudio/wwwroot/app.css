@@ -1,0 +1,65 @@
+/* --- Global Theme Variables --- */
+:root {
+    --ai-primary: #0dcaf0;
+    --ai-secondary: #818cf8;
+    --ai-bg-dark: #0f172a;
+    --ai-sidebar: #0b1120;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+html, body {
+    font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: var(--ai-bg-dark);
+    color: #f8fafc;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- Clean Up Default Blazor Constraints --- */
+.page {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: radial-gradient(circle at top right, rgba(13, 202, 240, 0.05), transparent);
+}
+
+/* Force standard links to match your theme */
+a, .btn-link {
+    color: var(--ai-primary);
+    text-decoration: none;
+}
+
+/* --- The Layout Fix --- */
+/* This kills the default Blazor "sidebar-toggler" and overlaps */
+.navbar-toggler, .top-row.navbar {
+    display: none !important;
+}
+
+/* Ensure the content area scrolls correctly without double bars */
+.content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Error Handling UI */
+#blazor-error-ui {
+    background: #1e293b;
+    color: #f1f5f9;
+    bottom: 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-top: 1px solid var(--ai-primary);
+}

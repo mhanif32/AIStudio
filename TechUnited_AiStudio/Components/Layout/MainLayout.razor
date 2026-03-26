@@ -1,0 +1,60 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+
+<div class="page">
+    <div class="sidebar shadow-lg">
+        <NavMenu />
+    </div>
+
+    <main>
+        @* Top Navigation Bar *@
+        <div class="top-row px-4 d-flex justify-content-between align-items-center">
+            <div class="brand-display d-md-none"> @* Only show brand in top row on mobile *@
+                <span class="fw-bold">
+                    <i class="bi bi-cpu-fill text-info me-2"></i>
+                    <span class="text-white">TECH</span><span class="text-info">UNITED</span>
+                </span>
+            </div>
+            
+            @* Spacer for desktop to keep auth links on the right *@
+            <div class="d-none d-md-block"></div>
+
+            <div class="auth-links">
+                <AuthorizeView>
+                    <Authorized>
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="text-secondary small d-none d-md-inline">
+                                <i class="bi bi-person-circle me-1 text-info"></i> @context.User.Identity?.Name
+                            </span>
+                            <form action="Account/Logout" method="post">
+                                <AntiforgeryToken />
+                                <input type="hidden" name="ReturnUrl" value="" /> @* Changed from "/" to "" *@
+                                <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3 fw-bold">
+                                    <i class="bi bi-box-arrow-left me-1"></i> Logout
+                                </button>
+                            </form>
+                        </div>
+                    </Authorized>
+                    <NotAuthorized>
+                        <div class="d-flex gap-2">
+                            <a href="Account/Login" class="btn btn-sm btn-info rounded-pill px-3 fw-bold text-dark text-decoration-none">Login</a>
+                            <a href="Account/Register" class="btn btn-sm btn-outline-info rounded-pill px-3 text-decoration-none">Register</a>
+                        </div>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+        </div>
+
+        <article class="content">
+            @* Removed container-fluid py-3 to let Dashboard take full height *@
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    <i class="bi bi-exclamation-circle-fill text-warning me-2"></i>
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

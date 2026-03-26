@@ -1,0 +1,79 @@
+/* _content/TechUnited_AiStudio/Components/Layout/MainLayout.razor.rz.scp.css */
+.page[b-3kncykhsk6] {
+    display: flex; /* Sidebar and Main content side-by-side */
+    flex-direction: row;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+.sidebar[b-3kncykhsk6] {
+    width: 280px; /* Fixed width for your NavMenu */
+    flex-shrink: 0;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+main[b-3kncykhsk6] {
+    flex: 1; /* Takes up remaining width */
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Prevents layout breaking on small screens */
+}
+
+.top-row[b-3kncykhsk6] {
+    height: 3.5rem;
+    background-color: rgba(15, 23, 42, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+/* _content/TechUnited_AiStudio/Components/Layout/NavMenu.razor.rz.scp.css */
+@implements IDisposable @inject NavigationManager NavigationManager @using Microsoft.AspNetCore.Components.Authorization @using Microsoft.EntityFrameworkCore @using TechUnited_AiStudio.Data @using TechUnited_AiStudio.Models @inject IDbContextFactory<ApplicationDbContext> DbFactory @inject AuthenticationStateProvider AuthStateProvider <div class="top-row ps-3 navbar navbar-dark shadow-sm"> <div class="container-fluid"> <a class="navbar-brand fw-bold" href=""> <i class="bi bi-cpu-fill me-2"></i>TechUnited AI </a> </div> </div> <input type="checkbox" title="Navigation menu" class="navbar-toggler" /> <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()"> <nav class="nav flex-column"> <div class="nav-item px-3"> <NavLink class="nav-link" href="" Match="NavLinkMatch.All"> <span class="bi bi-house-door-fill" aria-hidden="true"></span> Home </NavLink> </div> <div class="nav-item px-3"> <NavLink class="nav-link" href="dashboard"> <span class="bi bi-chat-right-dots-fill" aria-hidden="true"></span> AI Dashboard </NavLink> </div> <AuthorizeView> <Authorized> @* --- CHAT HISTORY SECTION --- *@ <div class="nav-item px-3 mt-3 border-top pt-3 text-muted small ps-4"> RECENT CHATS </div> @foreach (var chat in ChatHistory) {
+    <div class="nav-item px-3" >
+    <NavLink class="nav-link text-truncate" href="@($"dashboard/[b-b4rtgp8k03] {
+        chat .Key
+    }
+
+    ")"> <span class="bi bi-chat-left-text me-2" aria-hidden="true"></span> @chat.Value </NavLink> </div>
+}
+
+@* --- USER ACCOUNT SECTION --- *@ <div class="nav-item px-3 mt-3 border-top pt-3 text-muted small ps-4"> USER ACCOUNT </div> <div class="nav-item px-3"> <NavLink class="nav-link" href="Account/Manage"> <span class="bi bi-person-circle" aria-hidden="true"></span> @context.User.Identity?.Name </NavLink> </div> <div class="nav-item px-3"> <form action="Account/Logout" method="post"> <AntiforgeryToken /> @* Force ReturnUrl to / to avoid the 'Absolute Path' error *@ <input type="hidden" name="ReturnUrl" value="/" /> <button type="submit" class="nav-link w-100 text-start border-0 bg-transparent text-danger"> <span class="bi bi-box-arrow-left" aria-hidden="true"></span> Logout </button> </form> </div> </Authorized> <NotAuthorized> <div class="nav-item px-3"> <NavLink class="nav-link" href="Account/Register"> <span class="bi bi-person-plus-fill" aria-hidden="true"></span> Register </NavLink> </div> <div class="nav-item px-3"> <NavLink class="nav-link" href="Account/Login"> <span class="bi bi-shield-lock-fill" aria-hidden="true"></span> Login </NavLink> </div> </NotAuthorized> </AuthorizeView> </nav> </div> @code {
+    private string? currentUrl;
+    private Dictionary<Guid, string> ChatHistory = new();
+
+    protected override async Task OnInitializedAsync()[b-b4rtgp8k03] {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager .LocationChanged += OnLocationChanged;
+        await LoadChatHistory();
+    }
+
+    private async Task LoadChatHistory()[b-b4rtgp8k03] {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        var userId = user.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        if (!string.IsNullOrEmpty(userId))
+
+{
+    using var db = await DbFactory.CreateDbContextAsync();
+    // Get unique conversations for this user var history = await db.ChatMessages .Where(m => m.UserId == userId) .OrderByDescending(m => m.CreatedAt) .ToListAsync();
+    // Group by ConversationId and take the first user message as the title ChatHistory = history .GroupBy(m => m.ConversationId) .ToDictionary( g => g.Key, g => {
+                        var title = g.FirstOrDefault(m => m.Role == "user")?.Content ?? "New Chat";
+                        return title.Length > 25 ? title.Substring(0, 22) + "..." : title;
+                    } );
+}
+
+}
+
+private void OnLocationChanged(object? sender, LocationChangedEventArgs e)[b-b4rtgp8k03] {
+    currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+    StateHasChanged();
+}
+
+public void Dispose()[b-b4rtgp8k03] {
+    NavigationManager .LocationChanged -= OnLocationChanged;
+}
+}

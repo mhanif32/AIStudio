@@ -1,0 +1,72 @@
+﻿@page "/"
+
+<PageTitle>TechUnited AI | Home</PageTitle>
+
+<div class="hero-wrapper">
+    <div class="container py-5 text-center">
+        <div class="d-inline-flex align-items-center bg-dark text-info border border-info border-opacity-50 rounded-pill px-3 py-1 mb-4 shadow-glow">
+            <i class="bi bi-cpu-fill me-2 pulse-icon"></i>
+            <small class="fw-bold tracking-widest">TECHUNITED AI NODE ONLINE</small>
+        </div>
+
+        <h1 class="display-2 fw-bold text-white mb-3">
+            TechUnited <span class="text-gradient">AI Studio</span>
+        </h1>
+
+        <p class="lead text-secondary mb-5 mx-auto" style="max-width: 700px;">
+            The ultimate TechUnited AI Studio intelligence suite. Generate hyper-realistic art,
+            orchestrate LLMs, and process data privately on your own hardware.
+        </p>
+
+        <div class="d-flex justify-content-center gap-3">
+            <AuthorizeView>
+                <Authorized>
+                    <a href="dashboard" class="btn btn-info btn-lg px-5 fw-bold text-dark shadow-lg hover-lift">
+                        <i class="bi bi-cpu-fill me-2"></i> ENTER STUDIO
+                    </a>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="Account/Register" class="btn btn-info btn-lg px-5 fw-bold text-dark shadow-lg hover-lift">
+                        INITIALIZE NODE
+                    </a>
+                    <a href="Account/Login" class="btn btn-outline-light btn-lg px-5 fw-bold glass-button">
+                        SIGN IN
+                    </a>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card h-100 p-4 rounded-4">
+                <div class="icon-box mb-3">
+                    <i class="bi bi-palette2 text-info h1"></i>
+                </div>
+                <h4 class="text-white">Vision Synthesis</h4>
+                <p class="text-secondary small">Stable Diffusion accelerated via GPU Bridge on Port 11435.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card h-100 p-4 rounded-4">
+                <div class="icon-box mb-3">
+                    <i class="bi bi-chat-left-dots text-info h1"></i>
+                </div>
+                <h4 class="text-white">Neural Chat</h4>
+                <p class="text-secondary small">Deep integration with Llama 3 8B for advanced local reasoning.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card h-100 p-4 rounded-4">
+                <div class="icon-box mb-3">
+                    <i class="bi bi-shield-lock text-info h1"></i>
+                </div>
+                <h4 class="text-white">Private Core</h4>
+                <p class="text-secondary small">100% Local execution. Your data never leaves your physical system.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
